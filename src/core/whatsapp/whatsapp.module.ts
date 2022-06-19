@@ -26,8 +26,11 @@ export const WHATSAPP_CLIENT = 'whatsapp_client';
         });
 
         client.initialize();
+
+        return client;
       },
     },
   ],
+  exports: [WHATSAPP_CLIENT],
 })
 export class WhatsappModule {}

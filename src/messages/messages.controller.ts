@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { SendMessageRequest } from './messages.dto';
 import { MessagesService } from './messages.service';
 
@@ -9,5 +9,10 @@ export class MessagesController {
   @Post()
   sendMessage(@Body() body: SendMessageRequest) {
     return this.service.sendMessage(body);
+  }
+
+  @Get()
+  getAllMessage() {
+    return this.service.getAllMessages();
   }
 }

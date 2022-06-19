@@ -9,7 +9,7 @@ export const WHATSAPP_CLIENT = 'whatsapp_client';
   providers: [
     {
       provide: WHATSAPP_CLIENT,
-      useFactory: () => {
+      useFactory: async () => {
         const client = new Client({
           authStrategy: new LocalAuth(),
         });
@@ -23,6 +23,10 @@ export const WHATSAPP_CLIENT = 'whatsapp_client';
 
         client.on('ready', () => {
           console.log('ready');
+        });
+
+        client.on('auth_failure', (message) => {
+          console.log(message);
         });
 
         client.initialize();
